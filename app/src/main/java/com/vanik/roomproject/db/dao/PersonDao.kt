@@ -1,4 +1,4 @@
-package com.vanik.roomproject.db
+package com.vanik.roomproject.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

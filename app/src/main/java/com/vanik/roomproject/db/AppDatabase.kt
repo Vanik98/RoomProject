@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.vanik.roomproject.db.dao.CarDao
+import com.vanik.roomproject.db.dao.PersonDao
 import com.vanik.roomproject.entity.Car
 import com.vanik.roomproject.entity.Person
 

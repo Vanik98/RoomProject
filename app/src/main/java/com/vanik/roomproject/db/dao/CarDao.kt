@@ -1,4 +1,4 @@
-package com.vanik.roomproject.db
+package com.vanik.roomproject.db.dao
 
 import androidx.room.*
 import com.vanik.roomproject.entity.Car
