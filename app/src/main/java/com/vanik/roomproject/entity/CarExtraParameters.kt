@@ -1,7 +1,7 @@
 package com.vanik.roomproject.entity
 
-data class Complectation(
-    var type: Type,
+data class CarExtraParameters(
+    var carComfort: CarComfort,
     var abs : Boolean,
     var airConditioner : Boolean
 ) {

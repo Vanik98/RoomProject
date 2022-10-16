@@ -1,10 +1,6 @@
 package com.vanik.roomproject.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.vanik.roomproject.entity.Car
 
 @Dao
@@ -20,4 +16,8 @@ interface CarDao {
 
     @Delete
     fun delete(result: Car)
+
+    @Query("SELECT * FROM car WHERE serialNumber = :serialNumber")
+    fun getById(serialNumber: Long) : Car?
+
 }

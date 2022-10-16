@@ -1,17 +1,22 @@
 package com.vanik.roomproject.db
 
 import androidx.room.TypeConverter
-import com.vanik.roomproject.entity.Complectation
-import com.vanik.roomproject.entity.Type
+import com.vanik.roomproject.entity.CarComfort
 
 class DataConverter {
-    @TypeConverter
-    fun fromComplectation(type: Type, abs:Boolean, airConditioner:Boolean): Complectation {
-        return Complectation(type,abs,airConditioner)
-    }
-
-    @TypeConverter
-    fun stringToComplectation(complectation: Complectation): String {
-        return complectation.type.toString()+complectation.abs.toString()+complectation.airConditioner.toString()
-    }
+//    @TypeConverter
+//    fun fromAdvantages(comfort: Comfort, abs: Boolean, airConditioner: Boolean): Advantages {
+//        return Advantages(comfort, abs, airConditioner)
+//    }
+//
+//    @TypeConverter
+//    fun stringToAdvantages(advantages: Advantages): String {
+//        return advantages.name
+//    }
+//
+//    @TypeConverter
+//    fun toComfort(value: String) = enumValueOf<CarComfort>(value)
+//
+//    @TypeConverter
+//    fun fromComfort(value: CarComfort) = value.name
 }

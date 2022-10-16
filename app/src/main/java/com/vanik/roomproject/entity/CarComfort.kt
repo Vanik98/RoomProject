@@ -1,5 +1,5 @@
 package com.vanik.roomproject.entity
 
-enum class Type {
+enum class CarComfort {
     ECONOM,BUSINESS,LUX,SPORT
 }
