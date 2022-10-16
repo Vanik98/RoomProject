@@ -1,11 +1,11 @@
 package com.vanik.roomproject.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
-
-//https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/530-urok-6-room-entity.html
 
 @Entity(
     foreignKeys = [ForeignKey(
@@ -16,8 +16,8 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Person(
-    @PrimaryKey(autoGenerate = true)
-    val passportId: String,
+    @PrimaryKey(autoGenerate = true) val passportId: String,
     val name: String,
-    val cars: List<Car>
+    @Embedded(prefix = "address") val address: Address,
+    var cars: List<Car>
 )
