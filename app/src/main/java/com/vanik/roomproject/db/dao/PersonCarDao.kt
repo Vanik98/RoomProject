@@ -22,5 +22,4 @@ abstract class PersonCarDao {
             insertCar(car)
         }
     }
-
 }

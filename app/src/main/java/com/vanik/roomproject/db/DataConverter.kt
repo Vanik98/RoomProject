@@ -6,24 +6,30 @@ import androidx.room.TypeConverter
 import com.vanik.roomproject.entity.Car
 import com.vanik.roomproject.entity.CarComfort
 import com.vanik.roomproject.entity.CarExtraParameters
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToJsonElement
+import org.json.JSONObject
 import java.io.*
+import java.lang.reflect.Field
 import java.util.*
 
 class DataConverter {
 
-    @RequiresApi(Build.VERSION_CODES.O)
     @TypeConverter
     fun fromCarsList(str: String): List<Car> {
-        return fromString(str) as List<Car>
+        val cars : List<Car> = Json.decodeFromString(str)
+        return cars
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     @TypeConverter
     fun stringToCarsList(cars: List<Car>): String {
         var str = ""
-        for (car in cars) {
-            str += toString(car)
-        }
+//        for (car in cars) {
+//            str += Json.encodeToString(cars)
+//        }
+        str = Json.encodeToString(cars)
         return str
     }
 
@@ -33,25 +39,4 @@ class DataConverter {
     @TypeConverter
     fun fromComfort(value: CarComfort) = value.name
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    @Throws(IOException::class, ClassNotFoundException::class)
-    private fun fromString(s: String): Any? {
-        val data: ByteArray = Base64.getDecoder().decode(s)
-        val ois = ObjectInputStream(
-            ByteArrayInputStream(data)
-        )
-        val o: Any = ois.readObject()
-        ois.close()
-        return o
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    @Throws(IOException::class)
-    private fun toString(o: Serializable): String {
-        val baos = ByteArrayOutputStream()
-        val oos = ObjectOutputStream(baos)
-        oos.writeObject(o)
-        oos.close()
-        return Base64.getEncoder().encodeToString(baos.toByteArray())
-    }
 }

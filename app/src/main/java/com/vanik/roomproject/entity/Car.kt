@@ -4,8 +4,9 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
+@Serializable
 @Entity(
     foreignKeys = [ForeignKey(
         entity = Person::class,
@@ -20,4 +21,4 @@ data class Car (
     var speed: Int,
     @Embedded var carExtraParameters: CarExtraParameters,
     var userId:Int,
-) : Serializable
+)

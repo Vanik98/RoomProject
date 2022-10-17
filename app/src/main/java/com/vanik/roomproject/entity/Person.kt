@@ -1,14 +1,12 @@
 package com.vanik.roomproject.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
 @Entity
+@Serializable
 data class Person(
     @PrimaryKey val passportId: Int,
     val name: String,
