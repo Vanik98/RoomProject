@@ -10,8 +10,8 @@ import com.vanik.roomproject.entity.Person
 @Dao
 interface PersonDao {
 
-    @Query("SELECT * FROM car")
-    fun getAll(): List<Car>
+    @Query("SELECT * FROM person")
+    fun getAllPersons(): List<Person>
 
     //@Insert(onConflict = OnConflictStrategy.ROLLBACK)
     //стратегия конфликта заключается в откате транзакции

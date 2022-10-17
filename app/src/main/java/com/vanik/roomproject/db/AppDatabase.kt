@@ -5,7 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.vanik.roomproject.db.dao.CarDao
+import com.vanik.roomproject.db.dao.PersonCarDao
 import com.vanik.roomproject.db.dao.PersonDao
 import com.vanik.roomproject.entity.Car
 import com.vanik.roomproject.entity.Person
@@ -14,13 +17,20 @@ import com.vanik.roomproject.entity.Person
 @TypeConverters(DataConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun CarDao(): CarDao
-    abstract fun PersonDao() : PersonDao
+    abstract fun PersonDao(): PersonDao
+    abstract fun PersonCarDao():PersonCarDao
 
     companion object {
         fun getInstance(applicationContext: Context): AppDatabase {
             return Room.databaseBuilder(
                 applicationContext, AppDatabase::class.java, "app_database"
-            ).allowMainThreadQueries().build()
+            ).addMigrations(MIGRATION_1_2).allowMainThreadQueries().build()
+        }
+
+        private val MIGRATION_1_2: Migration = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE Person ADD COLUMN birthday INTEGER DEFAULT 0 NOT NULL")
+            }
         }
     }
 }

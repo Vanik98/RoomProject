@@ -1,26 +1,23 @@
 package com.vanik.roomproject.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
-@Entity
-data class Car(
-    @PrimaryKey val serialNumber: Long,
+@Entity(
+    foreignKeys = [ForeignKey(
+        entity = Person::class,
+        parentColumns = ["passportId"],
+        childColumns = ["userId"],
+        onDelete = ForeignKey.CASCADE
+    )]
+)
+data class Car (
+    @PrimaryKey(autoGenerate = true) val serialNumber: Long,
     var model: String,
     var speed: Int,
-//    var complectation: Complectation
-)
-
-
-//embedded
-//TypeConverters
-
-//   - gson
-//   - kotlinx serialization (actual)
-
-//keep List<Int>
-//keep List<Any>
-
-//   - gson
-//   - kotlinx serialization (actual)
-
+    @Embedded var carExtraParameters: CarExtraParameters,
+    var userId:Int,
+) : Serializable

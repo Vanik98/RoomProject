@@ -11,26 +11,37 @@ class MainActivity : AppCompatActivity() {
     private lateinit var insertButton: Button
     private lateinit var deleteButton: Button
     private lateinit var updateButton: Button
-    private lateinit var editText: EditText
-    private val repository = Repository(this)
+    private lateinit var editTextUserId: EditText
+    private lateinit var editTextCarId: EditText
+    private lateinit var repository: Repository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setButtons()
-        insertButton.setOnClickListener { repository.insertData() }
-//        deleteButton.setOnClickListener { deleteData(editText.text.toString()) }
-//        updateButton.setOnClickListener { updateData(editText.text.toString()) }
+        repository = Repository(this)
+        insertButton.setOnClickListener {
+            repository.insertData()
+        }
+        deleteButton.setOnClickListener {
+            val userID = editTextUserId.text.toString()
+            val carID = editTextCarId.text.toString()
+            repository.deleteCar(userID, carID)
+        }
+        updateButton.setOnClickListener {
+            val userID = editTextUserId.text.toString()
+            val carID = editTextCarId.text.toString()
+            repository.updateCar(userID, carID)
+        }
     }
 
     private fun setButtons() {
         insertButton = findViewById(R.id.buttonInsert)
         deleteButton = findViewById(R.id.buttonDelete)
         updateButton = findViewById(R.id.buttonUpdate)
-        editText = findViewById(R.id.editText)
+        editTextUserId = findViewById(R.id.editTextUserId)
+        editTextCarId = findViewById(R.id.editTextCarID)
     }
-
-
 
 
 }

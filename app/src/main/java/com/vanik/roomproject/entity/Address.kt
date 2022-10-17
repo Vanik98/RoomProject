@@ -2,8 +2,7 @@ package com.vanik.roomproject.entity
 
 import androidx.room.Ignore
 
-class Address(
+data class Address(
     val city: String,
-    val street: String,
-    @Ignore val location:String
+    val street: String
 )
