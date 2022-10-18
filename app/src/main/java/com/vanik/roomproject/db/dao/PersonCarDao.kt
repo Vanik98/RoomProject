@@ -16,7 +16,7 @@ abstract class PersonCarDao {
     abstract fun insertCar(car: Car)
 
     @Transaction
-    open fun insertCarsAndPerson(cars: ArrayList<Car>, person: Person) {
+    open fun insertCarsAndPerson(cars: List<Car>, person: Person) {
         insertPerson(person)
         for (car in cars) {
             insertCar(car)

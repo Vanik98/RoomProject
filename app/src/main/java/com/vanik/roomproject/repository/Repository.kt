@@ -47,8 +47,8 @@ class Repository(activity: MainActivity) {
             val car = Car(
                 serialNumber.toLong(),
                 "bmw",
-                600,
-                CarExtraParameters(CarComfort.ECONOM, true, true),
+                400,
+                CarExtraParameters(CarComfort.LUX, true, true),
                 userID.toInt()
             )
             db.CarDao().update(car)
