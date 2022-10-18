@@ -27,4 +27,5 @@ interface CarDao {
     @Query("SELECT * FROM car WHERE model LIKE :search OR speed LIKE :search")
     fun getAllWithModelLikeOrSpeedLike(search: String?): List<Car>
 
+
 }
