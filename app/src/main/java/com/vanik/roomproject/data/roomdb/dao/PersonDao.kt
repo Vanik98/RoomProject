@@ -9,7 +9,6 @@ import com.vanik.roomproject.entity.Person
 
 @Dao
 interface PersonDao {
-
     @Query("SELECT * FROM person")
     fun getAllPersons(): LiveData<List<Person>>
 
@@ -28,6 +27,4 @@ interface PersonDao {
 
     //@Insert(onConflict = OnConflictStrategy.IGNORE)
     //В этом режиме будет оставлена старая запись и операция вставки не будет выполнена.
-
-    //https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/531-urok-7-room-insert-update-delete-transaction.html
 }

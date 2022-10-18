@@ -12,7 +12,7 @@ class MainViewModel(activity: MainActivity) : ViewModel() {
     fun insertData() = viewModelScope.launch {
         try {
             repository.insertData()
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
 
         }
     }
@@ -20,7 +20,7 @@ class MainViewModel(activity: MainActivity) : ViewModel() {
     fun deleteCar(userID: String, carID: String) = viewModelScope.launch {
         try {
             repository.deleteCar(userID, carID)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
 
         }
     }
@@ -28,7 +28,7 @@ class MainViewModel(activity: MainActivity) : ViewModel() {
     fun updateCar(userID: String, carID: String) = viewModelScope.launch {
         try {
             repository.updateCar(userID, carID)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
 
         }
     }
