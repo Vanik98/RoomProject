@@ -1,14 +1,14 @@
-package com.vanik.roomproject.repository
+package com.vanik.roomproject.data.repository
 
 import com.vanik.roomproject.MainActivity
-import com.vanik.roomproject.db.AppDatabase
+import com.vanik.roomproject.data.roomdb.AppDatabase
 import com.vanik.roomproject.entity.*
 
 class Repository(activity: MainActivity) {
 
     private val db = AppDatabase.getInstance(activity)
 
-    fun insertData() {
+    suspend fun insertData() {
         for (passportID in 1..10) {
             val cars = arrayListOf<Car>()
             val carSize = (1..3).random()
@@ -29,7 +29,7 @@ class Repository(activity: MainActivity) {
         }
     }
 
-    fun deleteCar(userID: String, serialNumber: String) {
+    suspend fun deleteCar(userID: String, serialNumber: String) {
         if (serialNumber.isNotEmpty() && userID.isNotEmpty()) {
             val car = Car(
                 serialNumber.toLong(),
@@ -42,7 +42,7 @@ class Repository(activity: MainActivity) {
         }
     }
 
-    fun updateCar(userID:String,serialNumber: String) {
+    suspend fun updateCar(userID:String,serialNumber: String) {
         if (serialNumber.isNotEmpty() && userID.isNotEmpty()) {
             val car = Car(
                 serialNumber.toLong(),

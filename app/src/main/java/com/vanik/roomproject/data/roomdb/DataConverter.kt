@@ -1,8 +1,7 @@
-package com.vanik.roomproject.db
+package com.vanik.roomproject.data.roomdb
 
 import androidx.room.TypeConverter
 import com.vanik.roomproject.entity.Car
-import com.vanik.roomproject.entity.CarComfort
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

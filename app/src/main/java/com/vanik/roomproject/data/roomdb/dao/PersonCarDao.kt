@@ -1,4 +1,4 @@
-package com.vanik.roomproject.db.dao
+package com.vanik.roomproject.data.roomdb.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -16,7 +16,7 @@ abstract class PersonCarDao {
     abstract fun insertCar(car: Car)
 
     @Transaction
-    open fun insertCarsAndPerson(cars: List<Car>, person: Person) {
+    open suspend fun insertCarsAndPerson(cars: List<Car>, person: Person) {
         insertPerson(person)
         for (car in cars) {
             insertCar(car)
